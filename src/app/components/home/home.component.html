@@ -1,0 +1,36 @@
+<div class="jumbotron"
+    style="background-image: url('/assets/photo-1513104890138-7c749659a591.jpeg'); background-repeat: no-repeat; background-size: cover; color: white; height: 500px;">
+    <h1 class="display-4">Order food online!</h1>
+    <p class="lead">This is the sample app created as a part of assignment</p>
+    <hr class="my-4">
+    <p>Completed almost all. 
+        <br>Showing dummy images if thumnails not available.</p> 
+</div>
+<div class="container" *ngIf="locationDetails">
+    <div class="text-center">
+        <h2>Popular Restaurants</h2>
+        <p>Order from the popular restaurants in your city.</p>
+        <p><strong><span *ngFor="let cuisine of locationDetails.top_cuisines.slice(0,4); ">{{cuisine}} | </span></strong></p>
+    </div>
+    <div class="row" *ngIf="best_rated_restaurant">
+        <div class="col-md-3" *ngFor="let restaurant of best_rated_restaurant.slice(0,8); let i =index;" style="height:514px">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="restaurant.restaurant.thumb||default_image" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{restaurant.restaurant.name}}</h5>
+                    <p class="card-text"> {{restaurant.restaurant.location.address}}</p>
+                    <a [href]="'/restaurant/'+restaurant.restaurant.id" class="btn btn-primary">Order now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="pacman"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

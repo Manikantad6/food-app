@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "food-panda"
+    }
+  },
+  "defaultProject": "food-panda",
+  "cli": {
+    "analytics": "4eb8df2a-b008-4740-b858-f0b7046374dd"
+  }
 }

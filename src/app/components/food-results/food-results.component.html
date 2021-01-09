@@ -1,0 +1,29 @@
+<div class="container" *ngIf="searchResult">
+
+    <div class="text-center">
+        <h2> {{searchResult.results_found}} results found</h2>
+        
+    </div>
+    <hr>
+    <div class="row" *ngIf="searchResult.restaurants">
+        <div class="col-md-4" *ngFor="let restaurant of searchResult.restaurants.slice(0,12); let i =index;" style="height:514px">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="restaurant.restaurant.thumb||default_image" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{restaurant.restaurant.name}}</h5>
+                    <p class="card-text"> {{restaurant.restaurant.location.address}}</p>
+                    <a [href]="'/restaurant/'+restaurant.restaurant.id" class="btn btn-primary">Order now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="pacman"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
